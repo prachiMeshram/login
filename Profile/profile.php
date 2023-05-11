@@ -42,7 +42,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
   <div class="navbar-collapse collapse">
   <ul class="navbar-nav ml-auto">
   <li class="nav-item active">
-        <a class="nav-link" href="#"> <img src="https://img.icons8.com/metro/26/000000/guest-male.png"> <?php echo "profile ". $_SESSION['username']?></a>
+        <a class="nav-link" href="#"> <img src="https://img.icons8.com/metro/26/000000/guest-male.png"> <?php echo " ". $_SESSION['username']?></a>
       </li>
   </ul>
   </div>
@@ -51,8 +51,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
   </div>
 </nav>
 
-<div class="container mt-4">
-  <h3><?php echo "profile ". $_SESSION['username']?>! You can now use this website</h3>
+<div class="container mt-4 col-md-6">
+  <h3><?php echo "Hello ". $_SESSION['username']?>  You can now use this website</h3>
   <hr>
   <form action="" method="post">
     <div class="form-col">
@@ -68,14 +68,16 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
         <label for="exampleInputEmail1">Email</label>
         <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
       </div>
-      <div class="form-group row-md-3">
-        <label for="inputEmail4">Age</label>
-        <input type="number" class="form-control" name="age" id="age" placeholder="Age">
-      </div>
-      <div class="form-group row-md-3">
-        <label for="inputPassword4">DOB</label>
-        <input type="date" class="form-control" name ="dob" id="dob" placeholder="DOB">
-      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Age</label>
+          <input type="number" class="form-control" name="age" id="age" placeholder="Age">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">DOB</label>
+          <input type="date" class="form-control" name ="dob" id="dob" placeholder="DOB">
+        </div>
+      </div>  
     </div>
     <div class="form-group">
       <label for="inputAddress2">Address 2</label>
@@ -86,12 +88,12 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
         <label for="inputCity">City</label>
         <input type="text" class="form-control" id="inputCity">
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-6">
         <label for="inputState">State</label>
         <input type="text" class="form-control" id="inputState">
       </div> 
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary col-md-2">Save</button>
   </form>
 </div>
 

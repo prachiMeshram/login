@@ -1,5 +1,5 @@
 <?php
-require_once "config.php";
+require_once "../Config/config.php";
 
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
@@ -35,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
                 echo "Something went wrong";
             }
         }
+        mysqli_stmt_close($stmt);
     }
 
-    mysqli_stmt_close($stmt);
-
+    
 
 // Check for password
 
@@ -70,14 +70,15 @@ if(empty($username_err) && empty($password_err) && empty($confirm_password_err))
         // Set these parameters
         $param_username = $username;
         $param_password = password_hash($password, PASSWORD_DEFAULT);
+        echo $stmt;
 
         // Try to execute the query
         if (mysqli_stmt_execute($stmt))
         {
-            header("location: profile.php");
+            header("location: ../Profile/profile.php");
         }
         else{
-            echo "Something went wrong... cannot redirect!";
+            echo "Something went wrong... cannot redirect! Error: " . mysqli_stmt_error($stmt);
         }
     }
     mysqli_stmt_close($stmt);
@@ -111,65 +112,32 @@ mysqli_close($conn);
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
   <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="login.php">Login</a>
+        <a class="nav-link" href="../Login/login.php">Login</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<div class="container mt-4">
+<div class="container mt-4 col-md-6 text-center">
   <h3>Sign Up</h3>
   <hr>
   <form action="" method="post">
-    <div class="form-col">
-      <div class="form-group row-md-3">
+    <div class="form-col ">
+      <div class="form-group col-md-6">
         <label for="inputEmail4">Username</label>
         <input type="text" class="form-control" name="username" id="inputEmail4" placeholder="Email">
       </div>
-      <div class="form-group row-md-3">
+      <div class="form-group  col-md-6">
         <label for="inputPassword4">Password</label>
         <input type="password" class="form-control" name ="password" id="inputPassword4" placeholder="Password">
       </div>
-      <div class="form-group row-md-3">
+      <div class="form-group col-md-6">
         <label for="inputPassword4">Confirm Password</label>
         <input type="password" class="form-control" name ="confirm_password" id="inputPassword" placeholder="Confirm Password">
       </div>
     </div>
     
-    <!-- <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputState">State</label>
-        <input type="text" class="form-control" id="inputState">
-      </div> -->
-      <!-- <div class="form-group col-md-4">
-        <label for="inputState">State</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div> -->
-      <!-- <div class="form-group col-md-2">
-        <label for="inputZip">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
-      </div> -->
-    </div>
-    <!-- <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          Check me out
-        </label>
-      </div>
-    </div> -->
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary ">Sign Up</button>
   </form>
 </div>
 

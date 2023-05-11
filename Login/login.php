@@ -5,10 +5,10 @@ session_start();
 // check if the user is already logged in
 if(isset($_SESSION['username']))
 {
-    header("location: profile.php");
+    // header("location: ../Profile/profile.php");
     exit;
 }
-require_once "config.php";
+require_once "../Config/config.php";
 
 $username = $password = "";
 $err = "";
@@ -87,7 +87,7 @@ if(empty($err))
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
   <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="signup.php">Register</a>
+        <a class="nav-link" href="../Signup/signup.php">Register</a>
       </li>
     </ul>
   </div>
